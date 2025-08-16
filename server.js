@@ -16,7 +16,7 @@ const db = mysql.createConnection({
   user: process.env.USER,
   password: process.env.PASSWORD, 
   database: process.env.DATABASE,
-  port: process.env.PORT,
+  port: process.env.DBPORT,
   ssl: {
     rejectUnauthorized: false  }
 });
@@ -129,4 +129,4 @@ app.get('/home', (req, res) => {
     res.json({ message: `Welcome home, ${decoded.email}!` });
   });
 });
-app.listen(5000, () => console.log(`server runnning at PORT: ${process.env.PORT}`));
+app.listen(5000, () => console.log(`server runnning at PORT: ${process.env.PORT || 5000}`));
